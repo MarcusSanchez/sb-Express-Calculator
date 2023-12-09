@@ -1,10 +1,11 @@
 const request = require('supertest');
 const { app, server } = require('./main');
 
+afterAll(() => {
+  server.close();
+});
+
 describe('GET /mean', () => {
-  afterAll(() => {
-    server.close();
-  });
 
   it('should calculate the mean of numbers', async () => {
     const response = await request(app)
@@ -35,9 +36,6 @@ describe('GET /mean', () => {
 });
 
 describe('GET /median', () => {
-  afterAll(() => {
-    server.close();
-  });
 
   it('should calculate the median of numbers', async () => {
     const response = await request(app)
@@ -68,9 +66,6 @@ describe('GET /median', () => {
 });
 
 describe('GET /mode', () => {
-  afterAll(() => {
-    server.close();
-  });
 
   it('should calculate the mode of numbers', async () => {
     const response = await request(app)
